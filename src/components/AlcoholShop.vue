@@ -52,7 +52,7 @@ export default {
           price: 30,
         },
         {
-          name: gin,
+          name: "gin",
           price: 15,
         },
         { name: "vodka", price: 25 },
