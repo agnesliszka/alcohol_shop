@@ -44,11 +44,9 @@ export default {
       const age = this.getAge();
       if (age >= 18) {
         this.accessDenied = false;
-        console.log("masz 18 lat" + this.accessDenied);
       } else {
         this.accessDenied = true;
         this.warningAlert = true;
-        console.log("nie masz 18 lat");
         this.openAlert();
       }
     },
@@ -60,7 +58,6 @@ export default {
       if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         age--;
       }
-      console.log(age);
       return age;
     },
     openAlert() {
