@@ -13,15 +13,27 @@
           v-for="(item, index) in shopItems"
           :label="item"
           :key="index"
-          >{{ item.name }}</el-checkbox
-        >
-        <el-button
-          type="success"
-          icon="el-icon-message"
-          circle
-          @click="buyItems"
-          >Buy</el-button
-        >
+          ><el-row>
+            <el-card :body-style="{ padding: '0px' }">
+              <img
+                src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+                class="image"
+              />
+              <div style="padding: 14px">
+                <span>{{ item.name }}</span>
+                <div class="bottom clearfix">
+                  <el-button
+                    type="success"
+                    icon="el-icon-message"
+                    circle
+                    @click="buyItems"
+                    >Buy</el-button
+                  >
+                </div>
+              </div>
+            </el-card>
+          </el-row>
+        </el-checkbox>
       </el-checkbox-group>
     </div>
     <div class="shopping cart" v-if="shoppingCartPage">
@@ -101,24 +113,35 @@ h1 {
   font-size: 20px;
   text-decoration: none;
 }
-.el-carousel__item div {
-  color: #475669;
-  font-size: 14px;
-  opacity: 0.75;
-  line-height: 150px;
-  margin: 0;
-}
-.carouselButton {
-  margin-left: 250px;
-  width: 20%;
-  height: 150px;
+.time {
+  font-size: 13px;
+  color: #999;
 }
 
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
+.bottom {
+  margin-top: 13px;
+  line-height: 12px;
 }
 
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
+.button {
+  padding: 0;
+  float: right;
+}
+
+.image {
+  margin-left: 25%;
+  width: 50px;
+  height: 50px;
+  display: block;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
 }
 </style>
