@@ -20,26 +20,37 @@
                 <img :src="item.image" class="image" />
                 <div style="padding: 14px">
                   <span>{{ item.name }}</span>
-                  <div class="bottom clearfix">
-                    <el-button
-                      type="success"
-                      icon="el-icon-message"
-                      circle
-                      @click="buyItems"
-                      >Buy</el-button
-                    >
-                  </div>
+                  <div class="bottom clearfix"></div>
                 </div>
               </el-card>
             </el-row>
           </el-checkbox>
+          <el-button
+            type="success"
+            icon="el-icon-message"
+            circle
+            @click="buyItems"
+            >Buy</el-button
+          >
         </el-checkbox-group>
       </div>
     </div>
     <div class="shopping cart" v-if="shoppingCartPage">
-      <div v-for="(item, index) in itemsBought" :label="item" :key="index">
-        {{ item.name }}
-      </div>
+      <el-table :data="itemsBought" border style="width: 90%" class="table">
+        <el-table-column prop="name" label="Name"> </el-table-column>
+        <el-table-column prop="price" label="price"> </el-table-column>
+        <el-table-column fixed="right" label="Operations">
+          <template slot-scope="scope">
+            <el-button
+              @click.native.prevent="deleteRow(scope.$index, itemsBought)"
+              type="text"
+              size="small"
+            >
+              Remove item
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
     </div>
   </div>
 </template>
@@ -93,6 +104,9 @@ export default {
     };
   },
   methods: {
+    deleteRow(index, rows) {
+      rows.splice(index, 1);
+    },
     buyItems() {
       console.log(this.itemsBought);
       this.tooglePages();
@@ -162,5 +176,8 @@ h1 {
 
 .clearfix:after {
   clear: both;
+}
+.table {
+  margin: 30px;
 }
 </style>
