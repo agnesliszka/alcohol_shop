@@ -10,7 +10,7 @@
         >
       </div>
       <div class="toBeBought" v-if="itemsToBeBoughtPage">
-        <el-checkbox-group v-model="itemsBought">
+        <el-checkbox-group v-model="itemsToBeBought">
           <el-checkbox
             v-for="(item, index) in shopItems"
             :label="item"
@@ -26,6 +26,7 @@
             </el-row>
           </el-checkbox>
           <el-button
+            class="buyButton"
             type="success"
             icon="el-icon-message"
             circle
@@ -37,7 +38,7 @@
     </div>
     <div class="shopping cart" v-if="shoppingCartPage">
       <el-table :data="itemsBought" border style="width: 90%" class="table">
-        <el-table-column prop="name" label="Name"> </el-table-column>
+        <el-table-column prop="name" label="name"> </el-table-column>
         <el-table-column prop="price" label="price"> </el-table-column>
         <el-table-column fixed="right" label="Operations">
           <template slot-scope="scope">
@@ -67,6 +68,7 @@ export default {
   data() {
     return {
       itemsBought: [],
+      itemsToBeBought: [],
       itemsToBeBoughtPage: true,
       shoppingCartPage: false,
       shopItems: [
@@ -108,7 +110,8 @@ export default {
       rows.splice(index, 1);
     },
     buyItems() {
-      console.log(this.itemsBought);
+      this.itemsBought.push(...this.itemsToBeBought);
+      console.log("@@@" + this.itemsBought);
       this.tooglePages();
     },
     tooglePages() {
@@ -179,5 +182,13 @@ h1 {
 }
 .table {
   margin: 30px;
+}
+.buyButton {
+  margin-top: 20px;
+  align-self: center;
+  display: block;
+  margin-left: calc(50% - 50px);
+  height: 60px;
+  width: 100px;
 }
 </style>
