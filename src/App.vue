@@ -12,7 +12,8 @@ export default {
   components: {
     ShopGate,
   },
-};
+}
+
 </script>
 
 <style>
