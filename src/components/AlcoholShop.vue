@@ -10,7 +10,7 @@
         >
       </div>
       <div class="toBeBought" v-if="itemsToBeBoughtPage">
-        <el-checkbox-group v-model="itemsBought">
+        <el-checkbox-group v-model="itemsToBeBought">
           <el-checkbox
             v-for="(item, index) in itemsInTheShop"
             :label="item"
@@ -37,10 +37,21 @@
       </div>
     </div>
     <div class="shopping cart" v-if="shoppingCartPage">
-      <el-table :data="itemsBought" border style="width: 90%" class="table">
-        <el-table-column prop="name" label="Name"> </el-table-column>
-        <el-table-column prop="price" label="price"> </el-table-column>
-        <el-table-column fixed="right" label="Operations">
+      
+
+      <el-table
+      class= "table"
+    :data="itemsBought"
+    border
+    max-height="440"
+    :summary-method="getSummaries"
+    show-summary
+    style="width: 93%">
+    <el-table-column
+      prop="name"
+      label="Name">
+    </el-table-column>
+    <el-table-column fixed="right" label="Operations">
           <template slot-scope="scope">
             <el-button
               @click.native.prevent="deleteRow(scope.$index, itemsBought)"
@@ -51,7 +62,15 @@
             </el-button>
           </template>
         </el-table-column>
-      </el-table>
+    <el-table-column
+      prop="price"
+      label="Total cost (PLN)">
+    </el-table-column>
+     </el-table>
+       <!-- <el-table :data="itemsBought" border style="width: 90%" class="table">
+        <el-table-column prop="name" label="Total"> </el-table-column>
+          </el-table-column>
+      </el-table> -->
     </div>
   </div>
 </template>
@@ -67,6 +86,7 @@ export default {
   },
   data() {
     return {
+      itemsToBeBought: [],
       itemsBought: [],
       itemsToBeBoughtPage: true,
       shoppingCartPage: false,
@@ -81,7 +101,7 @@ export default {
       rows.splice(index, 1);
     },
     buyItems() {
-      console.log(this.itemsBought);
+      this.itemsBought.push(...this.itemsToBeBought);
       this.tooglePages();
     },
     tooglePages() {
@@ -96,6 +116,31 @@ export default {
       this.itemsToBeBoughtPage = false;
       this.shoppingCartPage = true;
     },
+    getSummaries(param) {
+        const { columns, data } = param;
+        const sums = [];
+        columns.forEach((column, index) => {
+          if (index === 0) {
+            sums[index] = 'Total Cost';
+            return;
+          }
+          const values = data.map(item => Number(item[column.property]));
+          if (!values.every(value => isNaN(value))) {
+            sums[index] = 'PLN ' + values.reduce((prev, curr) => {
+              const value = Number(curr);
+              if (!isNaN(value)) {
+                return prev + curr;
+              } else {
+                return prev;
+              }
+            }, 0);
+          } else {
+            sums[index] = 'N/A';
+          }
+        });
+
+        return sums;
+      }
   },
 };
 </script>
@@ -151,7 +196,7 @@ h1 {
   clear: both;
 }
 .table {
-  margin: 30px;
+  margin: 20px;
 }
 .buyButton{
   display: block;

@@ -4,12 +4,12 @@ export default {
   data() {
     return {};
   },
-  props: {
-    shopItems: Array,
-  },
-  mounted() {
-    console.log(this.shopItems);
-  },
+  // props: {
+  //   shopItems: Array,
+  // },
+  // mounted() {
+  //   console.log(this.shopItems);
+  // },
   methods: {},
 };
 </script>
