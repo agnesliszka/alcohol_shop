@@ -26,6 +26,7 @@
             </el-row>
           </el-checkbox>
           <el-button
+            class="buyButton" 
             type="success"
             icon="el-icon-message"
             circle
@@ -179,5 +180,11 @@ h1 {
 }
 .table {
   margin: 30px;
+}
+.buyButton{
+  display: block;
+  height: 50px;
+  width: 100px;
+  margin-left: calc(50% - 50px)
 }
 </style>
