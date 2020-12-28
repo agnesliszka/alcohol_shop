@@ -1,7 +1,6 @@
 <template>
   <div class="main">
     <h1>Alcohol shop</h1>
-
     <div>
       <div>
         <el-button type="info" @click="enableBuyingItems">Buy items</el-button>
@@ -35,49 +34,22 @@
           >
         </el-checkbox-group>
       </div>
+      <ShoppingCart 
+      :itemsBought="itemsBought" 
+      :shoppingCartPage="shoppingCartPage"/>
     </div>
-    <div class="shopping cart" v-if="shoppingCartPage">
-      <el-table
-      class= "table"
-    :data="itemsBought"
-    border
-    max-height="440"
-    :summary-method="getSummaries"
-    show-summary
-    style="width: 93%">
-    <el-table-column
-      prop="name"
-      label="Name">
-    </el-table-column>
-    <el-table-column fixed="right" label="Operations">
-          <template slot-scope="scope">
-            <el-button
-              @click.native.prevent="deleteRow(scope.$index, itemsBought)"
-              type="text"
-              size="small"
-            >
-              Remove item
-            </el-button>
-          </template>
-        </el-table-column>
-    <el-table-column
-      prop="price"
-      label="Total cost (PLN)">
-    </el-table-column>
-     </el-table>
     </div>
-  </div>
 </template>
 
 <script>
-// import ToBeBought from "./ToBeBought.vue";
+import ShoppingCart from "./ShoppingCart.vue";
 import {mapMutations} from 'vuex';
 
 export default {
   name: "AlcoholShop",
 
   components: {
-    // ToBeBought,
+    ShoppingCart,
   },
   data() {
     return {
@@ -95,9 +67,7 @@ export default {
     }},
   methods: {
     ...mapMutations(['buyItemsInTheShop']),
-    deleteRow(index, rows) {
-      rows.splice(index, 1);
-    },
+    
     buyItems() {
       this.itemsToBeBought.forEach((item) => this.buyItemsInTheShop(item));
       this.tooglePages();
@@ -114,31 +84,7 @@ export default {
       this.itemsToBeBoughtPage = false;
       this.shoppingCartPage = true;
     },
-    getSummaries(param) {
-        const { columns, data } = param;
-        const sums = [];
-        columns.forEach((column, index) => {
-          if (index === 0) {
-            sums[index] = 'Total Cost';
-            return;
-          }
-          const values = data.map(item => Number(item[column.property]));
-          if (!values.every(value => isNaN(value))) {
-            sums[index] = 'PLN ' + values.reduce((prev, curr) => {
-              const value = Number(curr);
-              if (!isNaN(value)) {
-                return prev + curr;
-              } else {
-                return prev;
-              }
-            }, 0);
-          } else {
-            sums[index] = 'N/A';
-          }
-        });
-
-        return sums;
-      }
+    
   },
 };
 </script>
@@ -193,9 +139,7 @@ h1 {
 .clearfix:after {
   clear: both;
 }
-.table {
-  margin: 20px;
-}
+
 .buyButton{
   display: block;
   height: 50px;
