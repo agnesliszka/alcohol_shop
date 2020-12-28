@@ -37,8 +37,6 @@
       </div>
     </div>
     <div class="shopping cart" v-if="shoppingCartPage">
-      
-
       <el-table
       class= "table"
     :data="itemsBought"
@@ -67,16 +65,13 @@
       label="Total cost (PLN)">
     </el-table-column>
      </el-table>
-       <!-- <el-table :data="itemsBought" border style="width: 90%" class="table">
-        <el-table-column prop="name" label="Total"> </el-table-column>
-          </el-table-column>
-      </el-table> -->
     </div>
   </div>
 </template>
 
 <script>
 // import ToBeBought from "./ToBeBought.vue";
+import {mapMutations} from 'vuex';
 
 export default {
   name: "AlcoholShop",
@@ -87,7 +82,6 @@ export default {
   data() {
     return {
       itemsToBeBought: [],
-      itemsBought: [],
       itemsToBeBoughtPage: true,
       shoppingCartPage: false,
     };
@@ -95,13 +89,19 @@ export default {
    computed: {
     itemsInTheShop() {
       return this.$store.state.shopItems;
+    },
+    itemsBought() {
+      console.log("@itemsbought")
+      console.log(this.$store.state.itemsBought)
+      return this.$store.state.itemsBought;
     }},
   methods: {
+    ...mapMutations(['buyItemsInTheShop']),
     deleteRow(index, rows) {
       rows.splice(index, 1);
     },
     buyItems() {
-      this.itemsBought.push(...this.itemsToBeBought);
+      this.itemsToBeBought.forEach((item) => this.buyItemsInTheShop(item));
       this.tooglePages();
     },
     tooglePages() {
