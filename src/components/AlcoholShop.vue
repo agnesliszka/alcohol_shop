@@ -91,8 +91,6 @@ export default {
       return this.$store.state.shopItems;
     },
     itemsBought() {
-      console.log("@itemsbought")
-      console.log(this.$store.state.itemsBought)
       return this.$store.state.itemsBought;
     }},
   methods: {
