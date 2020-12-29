@@ -1,11 +1,8 @@
 <template>
     <div class="toBeBought" v-if="itemsToBeBoughtPage">
         <el-checkbox-group v-model="itemsToBeBought">
-            <el-checkbox
-                v-for="(item, index) in itemsInTheShop"
-                :label="item"
-                :key="index"
-                ><el-row>
+            <el-checkbox v-for="(item, index) in itemsInTheShop" :label="item" :key="index">
+                <el-row>
                     <el-card :body-style="{ padding: '0px' }">
                         <img :src="item.image" class="image" />
                         <div style="padding: 14px">
@@ -21,8 +18,7 @@
                 icon="el-icon-message"
                 circle
                 @click="buyItems"
-                >Buy</el-button
-            >
+            >Buy</el-button>
         </el-checkbox-group>
     </div>
 </template>
@@ -38,18 +34,16 @@ export default {
     computed: {
         itemsInTheShop() {
             return this.$store.state.shopItems;
+        },
+        itemsToBeBoughtPage() {
+            return this.$store.state.itemsToBeBoughtPage;
+        },
+        shoppingCartPage() {
+            return this.$store.state.shoppingCartPage;
         }
     },
-    props: {
-        itemsToBeBoughtPage: Boolean,
-        shoppingCartPage: Boolean
-    },
     methods: {
-        ...mapMutations(["buyItemsInTheShop"]),
-        tooglePages() {
-            this.itemsToBeBoughtPage = !this.itemsToBeBoughtPage;
-            this.shoppingCartPage = !this.shoppingCartPage;
-        },
+        ...mapMutations(["buyItemsInTheShop", "tooglePages"]),
         buyItems() {
             this.itemsToBeBought.forEach(item => this.buyItemsInTheShop(item));
             this.tooglePages();
