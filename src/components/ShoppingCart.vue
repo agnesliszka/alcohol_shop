@@ -19,7 +19,7 @@
                     >Remove item</el-button>
                 </template>
             </el-table-column>
-            <el-table-column prop="price" label="Total cost (PLN)"></el-table-column>
+            <el-table-column prop="price" label="Price"></el-table-column>
         </el-table>
     </div>
 </template>
