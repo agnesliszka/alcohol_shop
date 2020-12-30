@@ -19,6 +19,7 @@
 import ToBeBought from "./ToBeBought.vue";
 import ShoppingCart from "./ShoppingCart.vue";
 import { mapMutations } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
     name: "AlcoholShop",
@@ -30,15 +31,20 @@ export default {
         return {};
     },
     computed: {
-        itemsBought() {
-            return this.$store.state.itemsBought;
-        },
-        itemsToBeBoughtPage() {
-            return this.$store.state.itemsToBeBoughtPage;
-        },
-        shoppingCartPage() {
-            return this.$store.state.shoppingCartPage;
-        }
+        ...mapGetters([
+            "itemsBought",
+            "itemsToBeBoughtPage",
+            "shoppingCartPage"
+        ])
+        // itemsBought() {
+        //     return this.$store.state.itemsBought;
+        // },
+        // itemsToBeBoughtPage() {
+        //     return this.$store.state.itemsToBeBoughtPage;
+        // },
+        // shoppingCartPage() {
+        //     return this.$store.state.shoppingCartPage;
+        // }
     },
     methods: {
         ...mapMutations(["enableBuyingItems", "enableSeeingItemsBought"])

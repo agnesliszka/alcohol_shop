@@ -24,14 +24,17 @@
     </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
+
 export default {
     props: {
         itemsBought: Array
     },
     computed: {
-        shoppingCartPage() {
-            return this.$store.state.shoppingCartPage;
-        }
+        ...mapGetters(["shoppingCartPage"])
+        // shoppingCartPage() {
+        //     return this.$store.state.shoppingCartPage;
+        // }
     },
     methods: {
         deleteRow(index, rows) {

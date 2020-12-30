@@ -24,6 +24,7 @@
 </template>
 <script>
 import { mapMutations } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
     data() {
@@ -32,15 +33,20 @@ export default {
         };
     },
     computed: {
-        itemsInTheShop() {
-            return this.$store.state.shopItems;
-        },
-        itemsToBeBoughtPage() {
-            return this.$store.state.itemsToBeBoughtPage;
-        },
-        shoppingCartPage() {
-            return this.$store.state.shoppingCartPage;
-        }
+        ...mapGetters([
+            "itemsInTheShop",
+            "itemsToBeBoughtPage",
+            "shoppingCartPage"
+        ])
+        // itemsInTheShop() {
+        //     return this.$store.state.shopItems;
+        // },
+        // itemsToBeBoughtPage() {
+        //     return this.$store.state.itemsToBeBoughtPage;
+        // },
+        // shoppingCartPage() {
+        //     return this.$store.state.shoppingCartPage;
+        // }
     },
     methods: {
         ...mapMutations(["buyItemsInTheShop", "tooglePages"]),

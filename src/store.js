@@ -47,7 +47,20 @@ export const store = new Vuex.Store({
         itemsToBeBoughtPage: true,
         shoppingCartPage: false
     },
-    getters: {},
+    getters: {
+        itemsInTheShop: state => {
+            return state.shopItems;
+        },
+        itemsBought: state => {
+            return state.itemsBought;
+        },
+        itemsToBeBoughtPage: state => {
+            return state.itemsToBeBoughtPage;
+        },
+        shoppingCartPage: state => {
+            return state.shoppingCartPage;
+        }
+    },
     mutations: {
         buyItemsInTheShop: (state, payload) => {
             console.log(payload);
