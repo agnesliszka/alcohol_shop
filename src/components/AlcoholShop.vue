@@ -59,4 +59,8 @@ h1 {
     border-radius: 5%;
     opacity: 94%;
 }
+a {
+    text-decoration: none;
+    color: white;
+}
 </style>
