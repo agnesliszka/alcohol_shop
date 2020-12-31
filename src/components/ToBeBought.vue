@@ -11,7 +11,14 @@
                         </div>
                     </el-card>
                 </el-row>
+                <el-button
+                    class="showDetailsButton"
+                    type="info"
+                    icon="el-icon-message"
+                    @click="showDetails"
+                >ShowDetails</el-button>
             </el-checkbox>
+
             <el-button
                 class="buyButton"
                 type="success"
@@ -53,6 +60,9 @@ export default {
         buyItems() {
             this.itemsToBeBought.forEach(item => this.buyItemsInTheShop(item));
             this.$router.push("/cart");
+        },
+        showDetails() {
+            this.$router.push("/details");
         }
     }
 };
@@ -74,6 +84,12 @@ export default {
     clear: both;
 }
 
+.showDetailsButton {
+    display: block;
+    height: 40px;
+    width: 130px;
+    margin-left: calc(50% - 65px);
+}
 .buyButton {
     display: block;
     height: 50px;
@@ -87,6 +103,7 @@ export default {
 }
 
 .image {
+    margin-left: 25%;
     margin-top: 5%;
     width: 70px;
     height: 70px;
