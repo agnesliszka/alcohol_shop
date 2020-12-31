@@ -63,20 +63,7 @@ export const store = new Vuex.Store({
     },
     mutations: {
         buyItemsInTheShop: (state, payload) => {
-            console.log(payload);
             state.itemsBought.push(payload);
-        },
-        tooglePages: state => {
-            state.itemsToBeBoughtPage = !state.itemsToBeBoughtPage;
-            state.shoppingCartPage = !state.shoppingCartPage;
-        },
-        enableBuyingItems: state => {
-            state.itemsToBeBoughtPage = true;
-            state.shoppingCartPage = false;
-        },
-        enableSeeingItemsBought: state => {
-            state.itemsToBeBoughtPage = false;
-            state.shoppingCartPage = true;
         }
     },
     actions: {}

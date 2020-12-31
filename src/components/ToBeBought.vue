@@ -1,5 +1,5 @@
 <template>
-    <div class="toBeBought" v-if="itemsToBeBoughtPage">
+    <div class="toBeBought">
         <el-checkbox-group v-model="itemsToBeBought">
             <el-checkbox v-for="(item, index) in itemsInTheShop" :label="item" :key="index">
                 <el-row>
@@ -49,10 +49,10 @@ export default {
         // }
     },
     methods: {
-        ...mapMutations(["buyItemsInTheShop", "tooglePages"]),
+        ...mapMutations(["buyItemsInTheShop"]),
         buyItems() {
             this.itemsToBeBought.forEach(item => this.buyItemsInTheShop(item));
-            this.tooglePages();
+            this.$router.push("/cart");
         }
     }
 };

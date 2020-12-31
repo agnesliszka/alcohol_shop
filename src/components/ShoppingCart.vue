@@ -1,5 +1,5 @@
 <template>
-    <div class="shopping cart" v-if="shoppingCartPage">
+    <div class="shopping cart">
         <el-table
             class="table"
             :data="itemsBought"
@@ -27,14 +27,8 @@
 import { mapGetters } from "vuex";
 
 export default {
-    props: {
-        itemsBought: Array
-    },
     computed: {
-        ...mapGetters(["shoppingCartPage"])
-        // shoppingCartPage() {
-        //     return this.$store.state.shoppingCartPage;
-        // }
+        ...mapGetters(["shoppingCartPage", "itemsBought"])
     },
     methods: {
         deleteRow(index, rows) {

@@ -1,32 +1,27 @@
 <template>
     <div class="main">
         <h1>Alcohol shop</h1>
+
         <div>
             <div>
-                <el-button type="info" @click="enableBuyingItems">Buy items</el-button>
-                <el-button type="info" @click="enableSeeingItemsBought">Shopping cart</el-button>
+                <el-button type="info">
+                    <router-link to="/buy">Buy items</router-link>
+                </el-button>
+                <el-button type="info">
+                    <router-link to="/cart">Shopping cart</router-link>
+                </el-button>
             </div>
-            <ToBeBought
-                :itemsToBeBoughtPage="itemsToBeBoughtPage"
-                :shoppingCartPage="shoppingCartPage"
-            />
-            <ShoppingCart :itemsBought="itemsBought" :shoppingCartPage="shoppingCartPage" />
         </div>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-import ToBeBought from "./ToBeBought.vue";
-import ShoppingCart from "./ShoppingCart.vue";
-import { mapMutations } from "vuex";
 import { mapGetters } from "vuex";
 
 export default {
     name: "AlcoholShop",
-    components: {
-        ToBeBought,
-        ShoppingCart
-    },
+    components: {},
     data() {
         return {};
     },
@@ -46,9 +41,7 @@ export default {
         //     return this.$store.state.shoppingCartPage;
         // }
     },
-    methods: {
-        ...mapMutations(["enableBuyingItems", "enableSeeingItemsBought"])
-    }
+    methods: {}
 };
 </script>
 
