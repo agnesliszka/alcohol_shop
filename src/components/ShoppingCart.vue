@@ -74,9 +74,7 @@ export default {
             return sums;
         },
         buyAnotherItem() {
-            console.log("@chosenCategoryItems");
-            console.log(this.chosenCategoryItems);
-            this.$router.push("/");
+            this.$router.go(-1);
         }
     }
 };

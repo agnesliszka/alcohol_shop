@@ -55,8 +55,6 @@ export default {
             "buyItemsInTheShop"
         ]),
         showDetails(item) {
-            console.log("@item.category");
-            console.log(item.category);
             this.addChosenCategoryName(item.category);
             const chosenCategoryIndex = this.shopItems.findIndex(
                 i => i.category === item.category
