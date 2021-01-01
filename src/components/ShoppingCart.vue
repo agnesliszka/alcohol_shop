@@ -27,7 +27,7 @@
             icon="el-icon-message"
             circle
             @click="buyAnotherItem"
-        >Buy another liquid</el-button>
+        >Buy another {{chosenCategoryName}}</el-button>
     </div>
 </template>
 <script>
@@ -38,6 +38,7 @@ export default {
         ...mapGetters([
             "shoppingCartPage",
             "chosenCategoryItems",
+            "chosenCategoryName",
             "itemsBought"
         ])
     },

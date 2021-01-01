@@ -49,8 +49,15 @@ export default {
         // }
     },
     methods: {
-        ...mapMutations(["addChosenCategoryItems", "buyItemsInTheShop"]),
+        ...mapMutations([
+            "addChosenCategoryItems",
+            "addChosenCategoryName",
+            "buyItemsInTheShop"
+        ]),
         showDetails(item) {
+            console.log("@item.category");
+            console.log(item.category);
+            this.addChosenCategoryName(item.category);
             const chosenCategoryIndex = this.shopItems.findIndex(
                 i => i.category === item.category
             );
