@@ -69,7 +69,7 @@ export default {
             return sums;
         },
         buyAnotherItem() {
-            this.$router.push("/buy");
+            this.$router.push("/");
         }
     }
 };

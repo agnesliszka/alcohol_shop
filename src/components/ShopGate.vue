@@ -41,7 +41,7 @@ export default {
             const age = this.getAge();
             if (age >= 18) {
                 this.accessDenied = false;
-                this.$router.push("/buy");
+                this.$router.push("/");
             } else {
                 this.accessDenied = true;
                 this.warningAlert = true;

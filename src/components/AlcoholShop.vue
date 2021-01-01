@@ -4,7 +4,7 @@
 
         <div>
             <div>
-                <router-link to="/buy">
+                <router-link to="/">
                     <el-button type="warning">Buy items</el-button>
                 </router-link>
 

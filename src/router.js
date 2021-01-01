@@ -4,7 +4,7 @@ import ShowDetails from "./components/ShowDetails.vue";
 
 export const routes = [
     {
-        path: "/buy",
+        path: "/",
         component: ToBeBought
         // props: {
         //     itemsToBeBoughtPage: "itemsToBeBoughtPage",
