@@ -1,16 +1,12 @@
 <template>
     <div class="toBeBought">
         <el-checkbox-group v-model="itemsToBeBought">
-            <el-checkbox
-                v-for="(item, index) in itemsInTheShop[0].items"
-                :label="item"
-                :key="index"
-            >
+            <el-checkbox v-for="(item, index) in wines" :label="item" :key="index">
                 <el-row>
                     <el-card :body-style="{ padding: '0px' }">
                         <img :src="item.image" class="image" />
                         <div style="padding: 14px">
-                            <span>{{ item.category }}</span>
+                            <span>{{ item.name }}</span>
                             <div class="bottom clearfix"></div>
                         </div>
                     </el-card>
@@ -40,7 +36,10 @@ export default {
             "itemsInTheShop",
             "itemsToBeBoughtPage",
             "shoppingCartPage"
-        ])
+        ]),
+        wines() {
+            return this.itemsInTheShop[0].items;
+        }
         // itemsInTheShop() {
         //     return this.$store.state.shopItems;
         // },
@@ -54,6 +53,12 @@ export default {
     methods: {
         ...mapMutations(["buyItemsInTheShop"]),
         buyItem() {
+            console.log("@wines");
+            console.log(this.wines);
+            console.log(this.item);
+            // console.log("@itemsInTheShop");
+            // console.log(this.itemsInTheShop[0].items);
+            console.log(this.itemsToBeBought);
             this.itemsToBeBought.forEach(item => this.buyItemsInTheShop(item));
             this.$router.push("/cart");
         }
