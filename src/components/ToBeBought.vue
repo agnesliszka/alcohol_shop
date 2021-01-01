@@ -18,14 +18,6 @@
                     @click="showDetails"
                 >ShowDetails</el-button>
             </el-checkbox>
-
-            <el-button
-                class="buyButton"
-                type="success"
-                icon="el-icon-message"
-                circle
-                @click="goToCart"
-            >Show cart</el-button>
         </el-checkbox-group>
     </div>
 </template>
@@ -57,10 +49,6 @@ export default {
     },
     methods: {
         ...mapMutations(["buyItemsInTheShop"]),
-        goToCart() {
-            // this.itemsToBeBought.forEach(item => this.buyItemsInTheShop(item));
-            this.$router.push("/cart");
-        },
         showDetails() {
             this.$router.push("/details");
         }

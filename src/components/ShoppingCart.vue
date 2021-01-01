@@ -9,7 +9,7 @@
             show-summary
             style="width: 93%"
         >
-            <el-table-column prop="category" label="Category"></el-table-column>
+            <el-table-column prop="name" label="Name"></el-table-column>
             <el-table-column fixed="right" label="Operations">
                 <template slot-scope="scope">
                     <el-button
@@ -21,6 +21,13 @@
             </el-table-column>
             <el-table-column prop="price" label="Price"></el-table-column>
         </el-table>
+        <el-button
+            class="buyButton"
+            type="success"
+            icon="el-icon-message"
+            circle
+            @click="buyAnotherItem"
+        >Buy another liquid</el-button>
     </div>
 </template>
 <script>
@@ -55,11 +62,14 @@ export default {
                             }
                         }, 0);
                 } else {
-                    sums[index] = "N/A";
+                    sums[index] = "-";
                 }
             });
 
             return sums;
+        },
+        buyAnotherItem() {
+            this.$router.push("/buy");
         }
     }
 };
