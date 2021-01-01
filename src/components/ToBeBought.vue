@@ -49,14 +49,14 @@ export default {
         // }
     },
     methods: {
-        ...mapMutations(["addChosenCategory", "buyItemsInTheShop"]),
+        ...mapMutations(["addChosenCategoryItems", "buyItemsInTheShop"]),
         showDetails(item) {
             const chosenCategoryIndex = this.shopItems.findIndex(
                 i => i.category === item.category
             );
             const chosenCategoryItems = this.shopItems[chosenCategoryIndex]
                 .items;
-            this.addChosenCategory(chosenCategoryItems);
+            this.addChosenCategoryItems(chosenCategoryItems);
             this.$router.push("/details");
         }
     }

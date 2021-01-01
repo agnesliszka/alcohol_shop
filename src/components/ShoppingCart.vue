@@ -35,7 +35,11 @@ import { mapGetters } from "vuex";
 
 export default {
     computed: {
-        ...mapGetters(["shoppingCartPage", "itemsBought"])
+        ...mapGetters([
+            "shoppingCartPage",
+            "chosenCategoryItems",
+            "itemsBought"
+        ])
     },
     methods: {
         deleteRow(index, rows) {
@@ -69,6 +73,8 @@ export default {
             return sums;
         },
         buyAnotherItem() {
+            console.log("@chosenCategoryItems");
+            console.log(this.chosenCategoryItems);
             this.$router.push("/");
         }
     }
