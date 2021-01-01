@@ -9,7 +9,7 @@
             show-summary
             style="width: 93%"
         >
-            <el-table-column prop="name" label="Name"></el-table-column>
+            <el-table-column prop="category" label="Category"></el-table-column>
             <el-table-column fixed="right" label="Operations">
                 <template slot-scope="scope">
                     <el-button

@@ -6,7 +6,7 @@
                     <el-card :body-style="{ padding: '0px' }">
                         <img :src="item.image" class="image" />
                         <div style="padding: 14px">
-                            <span>{{ item.name }}</span>
+                            <span>{{ item.category }}</span>
                             <div class="bottom clearfix"></div>
                         </div>
                     </el-card>
