@@ -24,8 +24,8 @@
                 type="success"
                 icon="el-icon-message"
                 circle
-                @click="buyItems"
-            >Buy</el-button>
+                @click="goToCart"
+            >Show cart</el-button>
         </el-checkbox-group>
     </div>
 </template>
@@ -57,8 +57,8 @@ export default {
     },
     methods: {
         ...mapMutations(["buyItemsInTheShop"]),
-        buyItems() {
-            this.itemsToBeBought.forEach(item => this.buyItemsInTheShop(item));
+        goToCart() {
+            // this.itemsToBeBought.forEach(item => this.buyItemsInTheShop(item));
             this.$router.push("/cart");
         },
         showDetails() {
@@ -93,8 +93,9 @@ export default {
 .buyButton {
     display: block;
     height: 50px;
-    width: 100px;
-    margin-left: calc(50% - 50px);
+    width: 120px;
+    margin-top: 20px;
+    margin-left: calc(50% - 60px);
 }
 
 .bottom {

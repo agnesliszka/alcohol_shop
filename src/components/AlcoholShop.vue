@@ -1,15 +1,16 @@
 <template>
     <div class="main">
-        <h1>Alcohol shop</h1>
+        <h1>Liquid shop</h1>
 
         <div>
             <div>
-                <el-button type="info">
-                    <router-link to="/buy">Buy items</router-link>
-                </el-button>
-                <el-button type="info">
-                    <router-link to="/cart">Shopping cart</router-link>
-                </el-button>
+                <router-link to="/buy">
+                    <el-button type="warning">Buy items</el-button>
+                </router-link>
+
+                <router-link to="/cart">
+                    <el-button type="warning">Shopping cart</el-button>
+                </router-link>
             </div>
         </div>
         <router-view></router-view>
@@ -58,6 +59,10 @@ h1 {
     height: 90vh;
     border-radius: 5%;
     opacity: 94%;
+}
+button {
+    margin-left: 10px;
+    width: 120px;
 }
 a {
     text-decoration: none;
