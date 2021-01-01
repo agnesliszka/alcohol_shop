@@ -1,7 +1,12 @@
 <template>
     <div class="toBeBought">
         <el-checkbox-group v-model="itemsToBeBought">
-            <el-checkbox v-for="(item, index) in itemsInTheShop" :label="item" :key="index">
+            <el-checkbox
+                v-for="(item, index) in shopItems"
+                :label="item"
+                :ref="item.category"
+                :key="index"
+            >
                 <el-row>
                     <el-card :body-style="{ padding: '0px' }">
                         <img :src="item.image" class="image" />
@@ -15,7 +20,7 @@
                     class="showDetailsButton"
                     type="info"
                     icon="el-icon-message"
-                    @click="showDetails"
+                    @click="showDetails(item)"
                 >ShowDetails</el-button>
             </el-checkbox>
         </el-checkbox-group>
@@ -32,12 +37,8 @@ export default {
         };
     },
     computed: {
-        ...mapGetters([
-            "itemsInTheShop",
-            "itemsToBeBoughtPage",
-            "shoppingCartPage"
-        ])
-        // itemsInTheShop() {
+        ...mapGetters(["shopItems", "itemsToBeBoughtPage", "shoppingCartPage"])
+        // shopItems() {
         //     return this.$store.state.shopItems;
         // },
         // itemsToBeBoughtPage() {
@@ -48,8 +49,14 @@ export default {
         // }
     },
     methods: {
-        ...mapMutations(["buyItemsInTheShop"]),
-        showDetails() {
+        ...mapMutations(["addChosenCategory", "buyItemsInTheShop"]),
+        showDetails(item) {
+            const chosenCategoryIndex = this.shopItems.findIndex(
+                i => i.category === item.category
+            );
+            const chosenCategoryItems = this.shopItems[chosenCategoryIndex]
+                .items;
+            this.addChosenCategory(chosenCategoryItems);
             this.$router.push("/details");
         }
     }

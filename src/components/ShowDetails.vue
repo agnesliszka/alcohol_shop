@@ -1,7 +1,7 @@
 <template>
     <div class="toBeBought">
         <el-checkbox-group v-model="itemsToBeBought">
-            <el-checkbox v-for="(item, index) in wines" :label="item" :key="index">
+            <el-checkbox v-for="(item, index) in chosenCategoryItems" :label="item" :key="index">
                 <el-row>
                     <el-card :body-style="{ padding: '0px' }">
                         <img :src="item.image" class="image" />
@@ -28,19 +28,20 @@ import { mapGetters } from "vuex";
 export default {
     data() {
         return {
-            itemsToBeBought: []
+            itemsToBeBought: [],
+            detailedItemsToBeBought: []
         };
     },
+
     computed: {
         ...mapGetters([
-            "itemsInTheShop",
+            "shopItems",
+            "chosenCategoryItems",
             "itemsToBeBoughtPage",
             "shoppingCartPage"
-        ]),
-        wines() {
-            return this.itemsInTheShop[0].items;
-        }
-        // itemsInTheShop() {
+        ])
+
+        // shopItems() {
         //     return this.$store.state.shopItems;
         // },
         // itemsToBeBoughtPage() {
@@ -53,12 +54,6 @@ export default {
     methods: {
         ...mapMutations(["buyItemsInTheShop"]),
         buyItem() {
-            console.log("@wines");
-            console.log(this.wines);
-            console.log(this.item);
-            // console.log("@itemsInTheShop");
-            // console.log(this.itemsInTheShop[0].items);
-            console.log(this.itemsToBeBought);
             this.itemsToBeBought.forEach(item => this.buyItemsInTheShop(item));
             this.$router.push("/cart");
         }

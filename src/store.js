@@ -196,14 +196,18 @@ export const store = new Vuex.Store({
         ],
         itemsBought: [],
         itemsToBeBoughtPage: true,
-        shoppingCartPage: false
+        shoppingCartPage: false,
+        chosenCategoryItems: ""
     },
     getters: {
-        itemsInTheShop: state => {
+        shopItems: state => {
             return state.shopItems;
         },
         itemsBought: state => {
             return state.itemsBought;
+        },
+        chosenCategoryItems: state => {
+            return state.chosenCategoryItems;
         },
         itemsToBeBoughtPage: state => {
             return state.itemsToBeBoughtPage;
@@ -213,6 +217,9 @@ export const store = new Vuex.Store({
         }
     },
     mutations: {
+        addChosenCategory: (state, payload) => {
+            state.chosenCategoryItems = payload;
+        },
         buyItemsInTheShop: (state, payload) => {
             state.itemsBought.push(payload);
         }
