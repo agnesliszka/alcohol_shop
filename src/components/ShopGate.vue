@@ -14,17 +14,17 @@
                 <button class="btn btn-btn btn-dark" @click="checkAge">Go to the shop</button>
             </div>
         </transition>
-        <AlcoholShop v-if="!accessDenied" />
+        <LiquorShop v-if="!accessDenied" />
     </div>
 </template>
 
 <script>
-import AlcoholShop from "./AlcoholShop.vue";
+import LiquorShop from "./LiquorShop.vue";
 
 export default {
     name: "ShopGate",
     components: {
-        AlcoholShop
+        LiquorShop
     },
     props: {
         msg: String

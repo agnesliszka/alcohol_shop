@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <ShopGate msg="Welcome to Alcohol Shop" />
+        <ShopGate msg="Welcome to Liquor Shop" />
     </div>
 </template>
 

@@ -1,7 +1,6 @@
 <template>
     <div class="main">
         <h1>Liquid shop</h1>
-
         <div>
             <div>
                 <router-link to="/">
@@ -16,12 +15,11 @@
         <router-view></router-view>
     </div>
 </template>
-
 <script>
 import { mapGetters } from "vuex";
 
 export default {
-    name: "AlcoholShop",
+    name: "LiquorShop",
     components: {},
     data() {
         return {};

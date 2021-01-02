@@ -110,4 +110,11 @@ export default {
     height: 70px;
     display: block;
 }
+/* label {
+    background-color: transparent;
+    border: transparent; */
+/* } */
+/* .__inner {
+    display: none !important;
+} */
 </style>
