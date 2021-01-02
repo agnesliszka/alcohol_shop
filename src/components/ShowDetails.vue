@@ -1,7 +1,12 @@
 <template>
     <div class="toBeBought">
         <el-checkbox-group v-model="itemsToBeBought">
-            <el-checkbox v-for="(item, index) in chosenCategoryItems" :label="item" :key="index">
+            <el-checkbox
+                v-for="(item, index) in chosenCategoryItems"
+                :label="item"
+                :key="index"
+                class="checkbox"
+            >
                 <el-row>
                     <el-card :body-style="{ padding: '0px' }">
                         <img :src="item.image" class="image" />
@@ -102,5 +107,8 @@ export default {
     width: 70px;
     height: 70px;
     display: block;
+}
+.checkbox {
+    margin-right: 30px;
 }
 </style>

@@ -2,6 +2,7 @@
     <div class="toBeBought">
         <el-checkbox-group v-model="itemsToBeBought">
             <el-checkbox
+                class="checkbox"
                 v-for="(item, index) in shopItems"
                 :label="item"
                 :ref="item.category"
@@ -109,6 +110,9 @@ export default {
     width: 70px;
     height: 70px;
     display: block;
+}
+.checkbox {
+    margin-right: 30px;
 }
 /* label {
     background-color: transparent;
