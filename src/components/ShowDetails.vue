@@ -16,13 +16,21 @@
                         </div>
                     </el-card>
                 </el-row>
-                <el-button
-                    class="showDetailsButton"
-                    type="info"
-                    icon="el-icon-message"
-                    @click="buyItem"
-                >Buy</el-button>
             </el-checkbox>
+            <el-button
+                class="showDetailsButton"
+                type="info"
+                icon="el-icon-message"
+                @click="buyItem"
+                >Buy</el-button
+            >
+            <el-alert
+                class="alert"
+                v-show="isEmpty"
+                title="Please buy at least one item."
+                type="warning"
+                :closable="false"
+            ></el-alert>
         </el-checkbox-group>
     </div>
 </template>
@@ -34,7 +42,8 @@ export default {
     data() {
         return {
             itemsToBeBought: [],
-            detailedItemsToBeBought: []
+            detailedItemsToBeBought: [],
+            isEmpty: true
         };
     },
 
@@ -56,10 +65,25 @@ export default {
         //     return this.$store.state.shoppingCartPage;
         // }
     },
+    watch: {
+        itemsToBeBought() {
+            this.itemsToBeBought.length === 0
+                ? (this.isEmpty = true)
+                : (this.isEmpty = false);
+        }
+    },
     methods: {
         ...mapMutations(["buyItemsInTheShop"]),
         buyItem() {
-            this.itemsToBeBought.forEach(item => this.buyItemsInTheShop(item));
+            if (this.itemsToBeBought.length === 0) {
+                this.isEmpty = true;
+                return;
+            } else {
+                this.isEmpty = false;
+                this.itemsToBeBought.forEach(item =>
+                    this.buyItemsInTheShop(item)
+                );
+            }
             this.$router.push("/cart");
         }
     }
@@ -110,5 +134,15 @@ export default {
 }
 .checkbox {
     margin-right: 30px;
+}
+.isEmpty {
+    color: red;
+    font-size: 14px;
+}
+.alert {
+    margin-left: 25%;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: 50%;
 }
 </style>
