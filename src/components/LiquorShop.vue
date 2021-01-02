@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <h1>Liquid shop</h1>
+        <h1>Liquor shop</h1>
         <div>
             <div>
                 <router-link to="/">
