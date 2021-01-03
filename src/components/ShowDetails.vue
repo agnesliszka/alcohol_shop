@@ -18,6 +18,7 @@
                 </el-row>
             </el-checkbox>
             <el-button
+                :disabled="isEmpty"
                 class="showDetailsButton"
                 type="info"
                 icon="el-icon-message"
