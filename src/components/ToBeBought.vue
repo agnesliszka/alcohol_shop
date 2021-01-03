@@ -114,11 +114,8 @@ export default {
 .checkbox {
     margin-right: 30px;
 }
-/* label {
+label >>> span {
     background-color: transparent;
-    border: transparent; */
-/* } */
-/* .__inner {
-    display: none !important;
-} */
+    border: transparent;
+}
 </style>
