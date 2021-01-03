@@ -125,8 +125,18 @@ export default {
     line-height: 12px;
 }
 
+div >>> .el-card__body {
+    width: 100px;
+    height: 140px;
+}
+
+div.el-card__body div >>> span {
+    width: 70px;
+    white-space: normal !important;
+}
+
 .image {
-    margin-left: 25%;
+    margin-left: 15%;
     margin-top: 5%;
     width: 70px;
     height: 70px;
