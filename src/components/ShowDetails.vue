@@ -22,8 +22,7 @@
                 type="info"
                 icon="el-icon-message"
                 @click="buyItem"
-                >Buy</el-button
-            >
+            >Buy</el-button>
             <el-alert
                 class="alert"
                 v-show="isEmpty"
@@ -140,9 +139,11 @@ export default {
     font-size: 14px;
 }
 .alert {
+    display: flex;
     margin-left: 25%;
     margin-top: 30px;
     margin-bottom: 20px;
     width: 50%;
+    justify-content: center;
 }
 </style>
