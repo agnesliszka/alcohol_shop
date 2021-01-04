@@ -231,5 +231,15 @@ export const store = new Vuex.Store({
             state.itemsBought.push(payload);
         }
     },
-    actions: {}
+    actions: {
+        addChosenCategoryName: ({ commit }, payload) => {
+            commit("addChosenCategoryName", payload);
+        },
+        addChosenCategoryItems: ({ commit }, payload) => {
+            commit("addChosenCategoryItems", payload);
+        },
+        buyItemsInTheShop: ({ commit }, payload) => {
+            commit("buyItemsInTheShop", payload);
+        }
+    }
 });

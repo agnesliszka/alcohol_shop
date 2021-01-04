@@ -28,7 +28,7 @@
     </div>
 </template>
 <script>
-import { mapMutations } from "vuex";
+import { mapActions } from "vuex";
 import { mapGetters } from "vuex";
 
 export default {
@@ -50,7 +50,7 @@ export default {
         // }
     },
     methods: {
-        ...mapMutations([
+        ...mapActions([
             "addChosenCategoryItems",
             "addChosenCategoryName",
             "buyItemsInTheShop"
