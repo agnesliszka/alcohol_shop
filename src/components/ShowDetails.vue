@@ -9,7 +9,7 @@
             >
                 <el-row>
                     <el-card :body-style="{ padding: '0px' }">
-                        <img :src="item.image" class="image" />
+                        <img :src="item.image" class="image" @click="getItemData(item)" />
                         <div style="padding: 14px">
                             <span>{{ item.name }}</span>
                             <div class="bottom clearfix"></div>
@@ -18,6 +18,7 @@
                 </el-row>
             </el-checkbox>
             <el-button
+                style="margin-bottom:20px"
                 :disabled="isEmpty"
                 class="showDetailsButton"
                 type="info"
@@ -32,6 +33,19 @@
                 :closable="false"
             ></el-alert>
         </el-checkbox-group>
+        <el-popover
+            v-if="!isEmpty"
+            placement="top"
+            :title="itemName"
+            style="height: 300px"
+            width="200"
+            trigger="click"
+        >
+            <el-button slot="reference">View item image</el-button>
+            <el-card :body-style="{ padding: '0px' }">
+                <img :src="itemImage" width="150" height="140" />
+            </el-card>
+        </el-popover>
     </div>
 </template>
 <script>
@@ -43,7 +57,9 @@ export default {
         return {
             itemsToBeBought: [],
             detailedItemsToBeBought: [],
-            isEmpty: true
+            isEmpty: true,
+            itemImage: "",
+            itemName: ""
         };
     },
 
@@ -51,6 +67,8 @@ export default {
         ...mapGetters([
             "shopItems",
             "chosenCategoryItems",
+            "chosenCategoryName",
+            "chosenItemsId",
             "itemsToBeBoughtPage",
             "shoppingCartPage"
         ])
@@ -80,11 +98,16 @@ export default {
                 return;
             } else {
                 this.isEmpty = false;
-                this.itemsToBeBought.forEach(item =>
-                    this.buyItemsInTheShop(item)
-                );
+                this.itemsToBeBought.forEach(item => {
+                    this.buyItemsInTheShop(item);
+                });
             }
             this.$router.push("/cart");
+        },
+        getItemData(item) {
+            console.log(item);
+            this.itemImage = item.image;
+            this.itemName = item.name;
         }
     }
 };
@@ -156,5 +179,9 @@ div.el-card__body div >>> span {
     margin-bottom: 20px;
     width: 50%;
     justify-content: center;
+}
+>>> .el-popover {
+    width: "400px" !important;
+    height: "400px" !important;
 }
 </style>
