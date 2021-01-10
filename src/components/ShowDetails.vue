@@ -38,6 +38,19 @@
                 :closable="false"
             ></el-alert>
         </el-checkbox-group>
+        <el-popover
+            v-if="!isEmpty"
+            placement="top"
+            :title="itemName"
+            style="height: 300px"
+            width="200"
+            trigger="click"
+        >
+            <el-button slot="reference">View item image</el-button>
+            <el-card :body-style="{ padding: '0px' }">
+                <img :src="itemImage" width="150" height="140" />
+            </el-card>
+        </el-popover>
         <router-view></router-view>
     </div>
 </template>
@@ -51,8 +64,8 @@ export default {
             itemsToBeBought: [],
             detailedItemsToBeBought: [],
             isEmpty: true,
-            itemImage: ""
-            // itemName: ""
+            itemImage: "",
+            itemName: ""
         };
     },
 
@@ -98,7 +111,7 @@ export default {
         },
         getItemData(item) {
             this.addChosenCategoryImage(item.image);
-            // this.itemName = item.name;
+            this.itemName = item.name;
         }
     }
 };

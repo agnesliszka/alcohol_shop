@@ -7,7 +7,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-    // props: ["itemName", "itemId"],
+    props: ["itemName", "itemId"],
     computed: {
         ...mapGetters(["chosenCategoryImage"]),
         srcPath() {
