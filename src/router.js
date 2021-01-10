@@ -23,7 +23,7 @@ export const routes = [
         component: ShowDetails,
         children: [
             {
-                path: "/:itemName:itemId",
+                path: "/products",
                 component: ChosenProduct,
                 props: true
             }
