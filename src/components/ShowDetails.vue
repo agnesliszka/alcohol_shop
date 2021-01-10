@@ -32,26 +32,14 @@
             >
             <el-alert
                 class="alert"
-                v-show="isEmpty"
+                v-if="isEmpty"
                 title="Please buy at least one item."
                 type="warning"
                 :closable="false"
             ></el-alert>
         </el-checkbox-group>
-        <el-popover
-            v-if="!isEmpty"
-            placement="top"
-            :title="itemName"
-            style="height: 300px"
-            width="200"
-            trigger="click"
-        >
-            <el-button slot="reference">View item image</el-button>
-            <el-card :body-style="{ padding: '0px' }">
-                <img :src="itemImage" width="150" height="140" />
-            </el-card>
-        </el-popover>
-        <router-view></router-view>
+        <!-- <router-view :id="itemId" :name="itemName"></router-view> -->
+        <router-view v-if="!isEmpty"></router-view>
     </div>
 </template>
 <script>
@@ -65,7 +53,8 @@ export default {
             detailedItemsToBeBought: [],
             isEmpty: true,
             itemImage: "",
-            itemName: ""
+            itemName: "",
+            itemId: null
         };
     },
 
@@ -112,6 +101,7 @@ export default {
         getItemData(item) {
             this.addChosenCategoryImage(item.image);
             this.itemName = item.name;
+            this.itemId = item.id;
         }
     }
 };
