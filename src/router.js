@@ -1,6 +1,7 @@
 import ToBeBought from "./components/ToBeBought.vue";
 import ShoppingCart from "./components/ShoppingCart.vue";
 import ShowDetails from "./components/ShowDetails.vue";
+import ChosenProduct from "./components/products/ChosenProduct.vue";
 
 export const routes = [
     {
@@ -19,6 +20,13 @@ export const routes = [
     },
     {
         path: "/details",
-        component: ShowDetails
+        component: ShowDetails,
+        children: [
+            {
+                path: "/:itemName:itemId",
+                component: ChosenProduct,
+                props: true
+            }
+        ]
     }
 ];

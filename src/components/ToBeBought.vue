@@ -22,7 +22,8 @@
                     type="info"
                     icon="el-icon-message"
                     @click="showDetails(item)"
-                >ShowDetails</el-button>
+                    >ShowDetails</el-button
+                >
             </el-checkbox>
         </el-checkbox-group>
     </div>
@@ -57,6 +58,7 @@ export default {
         ]),
         showDetails(item) {
             this.addChosenCategoryName(item.category);
+
             const chosenCategoryIndex = this.shopItems.findIndex(
                 i => i.category === item.category
             );

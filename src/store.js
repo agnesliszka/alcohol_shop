@@ -198,7 +198,7 @@ export const store = new Vuex.Store({
         itemsToBeBoughtPage: true,
         shoppingCartPage: false,
         chosenCategoryName: "",
-        chosenItemsId: 0,
+        chosenCategoryImage: "",
         chosenCategoryItems: ""
     },
     getters: {
@@ -211,11 +211,11 @@ export const store = new Vuex.Store({
         chosenCategoryItems: state => {
             return state.chosenCategoryItems;
         },
-        chosenItemsId: state => {
-            return state.chosenItemsId;
-        },
         chosenCategoryName: state => {
             return state.chosenCategoryName;
+        },
+        chosenCategoryImage: state => {
+            return state.chosenCategoryImage;
         },
         itemsToBeBoughtPage: state => {
             return state.itemsToBeBoughtPage;
@@ -228,8 +228,8 @@ export const store = new Vuex.Store({
         addChosenCategoryName: (state, payload) => {
             state.chosenCategoryName = payload;
         },
-        addChosenItemId: (state, payload) => {
-            state.chosenItemId = payload;
+        addChosenCategoryImage: (state, payload) => {
+            state.chosenCategoryImage = payload;
         },
         addChosenCategoryItems: (state, payload) => {
             state.chosenCategoryItems = payload;
@@ -242,8 +242,8 @@ export const store = new Vuex.Store({
         addChosenCategoryName: ({ commit }, payload) => {
             commit("addChosenCategoryName", payload);
         },
-        addChosenItemId: ({ commit }, payload) => {
-            commit("addChosenItemId", payload);
+        addChosenCategoryImage: ({ commit }, payload) => {
+            commit("addChosenCategoryImage", payload);
         },
         addChosenCategoryItems: ({ commit }, payload) => {
             commit("addChosenCategoryItems", payload);

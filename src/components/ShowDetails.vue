@@ -9,7 +9,11 @@
             >
                 <el-row>
                     <el-card :body-style="{ padding: '0px' }">
-                        <img :src="item.image" class="image" @click="getItemData(item)" />
+                        <img
+                            :src="item.image"
+                            class="image"
+                            @click="getItemData(item)"
+                        />
                         <div style="padding: 14px">
                             <span>{{ item.name }}</span>
                             <div class="bottom clearfix"></div>
@@ -24,7 +28,8 @@
                 type="info"
                 icon="el-icon-message"
                 @click="buyItem"
-            >Buy</el-button>
+                >Buy</el-button
+            >
             <el-alert
                 class="alert"
                 v-show="isEmpty"
@@ -46,6 +51,7 @@
                 <img :src="itemImage" width="150" height="140" />
             </el-card>
         </el-popover>
+        <router-view></router-view>
     </div>
 </template>
 <script>
@@ -68,7 +74,6 @@ export default {
             "shopItems",
             "chosenCategoryItems",
             "chosenCategoryName",
-            "chosenItemsId",
             "itemsToBeBoughtPage",
             "shoppingCartPage"
         ])
@@ -91,7 +96,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(["buyItemsInTheShop"]),
+        ...mapActions(["buyItemsInTheShop", "addChosenCategoryImage"]),
         buyItem() {
             if (this.itemsToBeBought.length === 0) {
                 this.isEmpty = true;
@@ -105,8 +110,7 @@ export default {
             this.$router.push("/cart");
         },
         getItemData(item) {
-            console.log(item);
-            this.itemImage = item.image;
+            this.addChosenCategoryImage(item.image);
             this.itemName = item.name;
         }
     }
@@ -180,7 +184,7 @@ div.el-card__body div >>> span {
     width: 50%;
     justify-content: center;
 }
->>> .el-popover {
+body /deep/ .el-popover {
     width: "400px" !important;
     height: "400px" !important;
 }
