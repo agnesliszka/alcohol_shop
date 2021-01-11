@@ -11,7 +11,9 @@
                         format="yyyy/MM/dd"
                     ></el-date-picker>
                 </div>
-                <button class="btn btn-btn btn-dark" @click="checkAge">Go to the shop</button>
+                <button class="btn btn-btn btn-dark" @click="checkAge">
+                    Go to the shop
+                </button>
             </div>
         </transition>
         <LiquorShop v-if="!accessDenied" />
@@ -41,7 +43,7 @@ export default {
             const age = this.getAge();
             if (age >= 18) {
                 this.accessDenied = false;
-                this.$router.push("/");
+                this.$router.push("/buy");
             } else {
                 this.accessDenied = true;
                 this.warningAlert = true;

@@ -3,7 +3,7 @@
         <h1>Liquor shop</h1>
         <div>
             <div>
-                <router-link to="/">
+                <router-link to="/buy">
                     <el-button type="warning">Buy items</el-button>
                 </router-link>
 
