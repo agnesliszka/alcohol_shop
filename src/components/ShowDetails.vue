@@ -53,8 +53,7 @@ export default {
             detailedItemsToBeBought: [],
             isEmpty: true,
             itemImage: "",
-            itemName: "",
-            itemId: null
+            itemName: ""
         };
     },
 
@@ -85,7 +84,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(["buyItemsInTheShop", "addChosenCategoryImage"]),
+        ...mapActions(["buyItemsInTheShop", "addchosenItemImage"]),
         buyItem() {
             if (this.itemsToBeBought.length === 0) {
                 this.isEmpty = true;
@@ -99,9 +98,8 @@ export default {
             this.$router.push("/cart");
         },
         getItemData(item) {
-            this.addChosenCategoryImage(item.image);
+            this.addchosenItemImage(item.image);
             this.itemName = item.name;
-            this.itemId = item.id;
         }
     }
 };

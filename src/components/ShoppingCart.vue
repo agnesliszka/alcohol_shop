@@ -13,10 +13,13 @@
             <el-table-column fixed="right" label="Operations">
                 <template slot-scope="scope">
                     <el-button
-                        @click.native.prevent="deleteRow(scope.$index, itemsBought)"
+                        @click.native.prevent="
+                            deleteRow(scope.$index, itemsBought)
+                        "
                         type="text"
                         size="small"
-                    >Remove item</el-button>
+                        >Remove item</el-button
+                    >
                 </template>
             </el-table-column>
             <el-table-column prop="price" label="Price"></el-table-column>
@@ -27,7 +30,8 @@
             icon="el-icon-message"
             circle
             @click="buyAnotherItem"
-        >Buy another {{chosenCategoryName}}</el-button>
+            >Buy another {{ chosenCategoryName }}</el-button
+        >
     </div>
 </template>
 <script>
