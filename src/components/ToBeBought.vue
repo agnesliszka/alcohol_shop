@@ -15,6 +15,26 @@
                             <span>{{ item.category }}</span>
                             <div class="bottom clearfix"></div>
                         </div>
+                        <el-popover
+                            placement="top"
+                            :title="item.category"
+                            style="height: 300px"
+                            width="200"
+                            trigger="click"
+                        >
+                            <el-button slot="reference"
+                                >Show {{ item.category }} img</el-button
+                            >
+                            <el-card
+                                :body-style="{
+                                    padding: '0px',
+                                    position: absolute,
+                                    transform: 'translate(-20%, 0%)'
+                                }"
+                            >
+                                <img :src="item.image" />
+                            </el-card>
+                        </el-popover>
                     </el-card>
                 </el-row>
                 <el-button
